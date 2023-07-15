@@ -33,16 +33,83 @@ export interface IAssetRepository {
 // Models
 interface AssetAttributes {
   id: string;
-  name: string;
+  title: string;
   type: string;
+  fileFormat: string;
+  size: string;
+  description: string;
   collectionId: string;
+}
+
+interface AssetsCategoriesAttributes {
+  id: string;
+  assetId: string;
+  categoryId: string;
+}
+
+interface CategoryAttributes {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface CollectionAttributes {
+  id: string;
+  name: string;
+  description: string;
+}
+
+
+interface CollectionCategoriesAttributes {
+  id: string;
+  collectionId: string;
+  categoryId: string;
 }
 
 export class Asset extends Model<AssetAttributes> implements AssetAttributes {
   public id!: string;
-  public name!: string;
+  public title!: string;
   public type!: string;
   public collectionId!: string;
+  public fileFormat!: string;
+  public size!: string;
+  public description!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+export class AssetsCategories extends Model<AssetsCategoriesAttributes> implements AssetsCategoriesAttributes {
+  public id!: string;
+  public assetId!: string;
+  public categoryId!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+export class Category extends Model<CategoryAttributes> implements CategoryAttributes {
+  public id!: string;
+  public name!: string;
+  public description!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+export class Collection extends Model<CollectionAttributes> implements CollectionAttributes {
+  public id!: string;
+  public name!: string;
+  public description!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+export class CollectionCategories extends Model<CollectionCategoriesAttributes> implements CollectionCategoriesAttributes {
+  public id!: string;
+  public collectionId!: string;
+  public categoryId!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;

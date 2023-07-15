@@ -5,7 +5,7 @@ WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'demoup-db')\gexec
 
 SELECT current_database();
 
-REATE TABLE IF NOT EXISTS assets (
+CREATE TABLE IF NOT EXISTS assets (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     description TEXT,
