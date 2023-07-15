@@ -2,7 +2,6 @@ import { DataTypes, UUIDV4 } from 'sequelize';
 import sequelize from '../../sequelize.orm';
 import { Asset } from '../interfaces';
 
-
 Asset.init(
     {
         id: {
@@ -41,5 +40,5 @@ Asset.init(
         tableName: 'assets',
       }
   );
-  
+
 export default Asset;

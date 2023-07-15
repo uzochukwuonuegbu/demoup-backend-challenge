@@ -5,6 +5,7 @@ export type ExpressRouteFunc = (req: Request, res: Response, next?: NextFunction
 
 export interface IAssetController {
   createAsset(): ExpressRouteFunc;
+  getAssets(): ExpressRouteFunc;
   getAssetById(): ExpressRouteFunc;
   updateAsset(): ExpressRouteFunc;
   deleteAsset(): ExpressRouteFunc;
@@ -12,6 +13,7 @@ export interface IAssetController {
 
 export interface IAssetService {
   createAsset(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Asset>;
+  getAssets(filter: any): Promise<Asset[]>;
   getAssetById(id: string): Promise<Asset>;
   getAssetsByCategoryId(categoryId: string): Promise<AssetsCategories[] | null>;
   getAssetsByCollectionId(categoryId: string): Promise<Asset[] | null>;

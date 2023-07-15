@@ -1,4 +1,4 @@
-import { IAssetsCategoryRepository, AssetsCategories, ICategoryRepository, ICategoryService, Category, ICollectionCategoryRepository, CollectionCategories } from "../interfaces";
+import { AssetsCategories, Category, CollectionCategories, IAssetsCategoryRepository, ICategoryRepository, ICategoryService, ICollectionCategoryRepository } from "../interfaces";
 
 export class CategoryService implements ICategoryService {
   constructor(private categoryRepository: ICategoryRepository, private readonly assetCategoryRepository: IAssetsCategoryRepository, private readonly collectionsCategoryRepository: ICollectionCategoryRepository) {}

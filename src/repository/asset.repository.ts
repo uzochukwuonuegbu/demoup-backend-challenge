@@ -1,8 +1,8 @@
-import { IAssetRepository, Asset } from '../interfaces';
+import { Asset, IAssetRepository } from '../interfaces';
 import { BaseRepository } from './base.repository';
 
 export class AssetRepository extends BaseRepository<Asset> implements IAssetRepository {
-    constructor(dbClient: typeof Asset) {
+    constructor(dbClient: any) {
       super(dbClient);
     }
 

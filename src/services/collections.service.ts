@@ -1,4 +1,4 @@
-import { ICollectionService, Collection, ICollectionRepository, ICollectionCategoryRepository } from "../interfaces";
+import { Collection, ICollectionCategoryRepository, ICollectionRepository, ICollectionService } from "../interfaces";
 
 export class CollectionService implements ICollectionService {
   constructor(private collectionRepository: ICollectionRepository, private collectionCategoryRepository: ICollectionCategoryRepository) {}

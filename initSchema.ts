@@ -4,7 +4,8 @@ const client = getDbClient();
 
 async function createSchema() {
   try {
-    await client.connect();
+    const connected = await client.connect();
+    console.log({ connected });
 
     // Define your schema creation queries here
     const schemaQueries = [
@@ -16,8 +17,8 @@ async function createSchema() {
     ];
 
     for (const query of schemaQueries) {
-      await client.query(query);
-      console.log('Executed query:', query);
+      const res = await client.query(query);
+      console.log('Executed query:', query, res);
     }
 
     console.log('Schema creation completed successfully!');

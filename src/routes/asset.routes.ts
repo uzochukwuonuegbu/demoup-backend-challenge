@@ -8,15 +8,21 @@ const router = Router({
 });
 
 const routes = {
-  createAsset: "/asset",
-  getAssetById: "/asset/:id",
-  updateAsset: "/asset/:id",
-  deleteAsset: "/asset/:id",
+  createAsset: "/assets",
+  getAssets: "/assets",
+  getAssetById: "/assets/:id",
+  updateAsset: "/assets/:id",
+  deleteAsset: "/assets/:id",
 };
 
 router.post(
     routes.createAsset,
     ctrl.createAsset()
+);
+
+router.get(
+  routes.getAssets,
+  ctrl.getAssets()
 );
 
 router.get(

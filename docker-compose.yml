@@ -29,7 +29,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: audvice
+      POSTGRES_DB: demoup-db
       POSTGRES_HOST: postgresDb
 #     volumes:
 #       - db_data:/var/lib/postgresql/data

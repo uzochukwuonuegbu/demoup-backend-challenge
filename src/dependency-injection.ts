@@ -1,5 +1,6 @@
 import { AssetController } from "./controllers/asset.controller";
-import { Asset, AssetsCategories, Category, Collection, CollectionCategories, IAssetController, IAssetRepository, IAssetsCategoryRepository, IAssetService, ICategoryRepository, ICategoryService, ICollectionCategoryRepository, ICollectionRepository, ICollectionService } from "./interfaces";
+import { IAssetController, IAssetRepository, IAssetsCategoryRepository, IAssetService, ICategoryRepository, ICategoryService, ICollectionCategoryRepository, ICollectionRepository, ICollectionService } from "./interfaces";
+import { Asset, AssetsCategories, Category, Collection, CollectionCategories } from './models';
 import { AssetRepository } from "./repository/asset.repository";
 import { AssetsCategoryRepository } from "./repository/assetsCategories.repository";
 import { CategoryRepository } from "./repository/category.repository";

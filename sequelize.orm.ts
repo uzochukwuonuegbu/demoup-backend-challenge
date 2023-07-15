@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
   port: parseInt(process.env.DB_PORT || '5432', 10),
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
-  database: process.env.DB_NAME || 'audvice-dev',
+  database: process.env.DB_NAME || 'demoup-db-dev',
 });
 
 (async () => {
