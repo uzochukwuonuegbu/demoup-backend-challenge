@@ -13,10 +13,26 @@ export interface IAssetController {
 export interface IAssetService {
   createAsset(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Asset>;
   getAssetById(id: string): Promise<Asset>;
-  getAssetsByCategoryId(categoryId: string): Promise<Asset[] | null>;
+  getAssetsByCategoryId(categoryId: string): Promise<AssetsCategories[] | null>;
   getAssetsByCollectionId(categoryId: string): Promise<Asset[] | null>;
   updateAsset(id: string, data: any): Promise<void>;
   deleteAsset(id: string): Promise<void>;
+}
+
+export interface ICategoryService {
+  createCategory(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Category>;
+  getCategoryById(id: string): Promise<Category>;
+  getCategoriesByAssetId(assetId: string): Promise<AssetsCategories[] | null>;
+  getCategoriesByCollectionId(categoryId: string): Promise<CollectionCategories[] | null>;
+  updateCategory(id: string, data: any): Promise<void>;
+  deleteCategory(id: string): Promise<void>;
+}
+
+export interface ICollectionService {
+  createCollection(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Category>;
+  getCollectionById(id: string): Promise<Category>;
+  updateCollection(id: string, data: any): Promise<void>;
+  deleteCollection(id: string): Promise<void>;
 }
 
 export interface IAssetRepository {
@@ -26,7 +42,7 @@ export interface IAssetRepository {
   update(id: string, updates: any): Promise<string>;
   delete(id: string): Promise<void>;
   findAll(query?: any): Promise<Asset[]>;
-  findByAssetsCollectionId(d: string): Promise<Asset[]>;
+  findByAssetsCollectionId(id: string): Promise<Asset[]>;
 }
 
 export interface ICategoryRepository {
@@ -64,7 +80,7 @@ export interface ICollectionCategoryRepository {
   delete(id: string): Promise<void>;
   findAll(query?: any): Promise<CollectionCategories[]>;
   findCategoriesByCollectionId(id: string): Promise<CollectionCategories[]>;
-  findACollectionsByCategoryId(id: string): Promise<CollectionCategories[]>;
+  findCollectionsByCategoryId(id: string): Promise<CollectionCategories[]>;
 }
 
 // Models

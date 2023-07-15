@@ -1,4 +1,4 @@
-import { AssetsCategories, IAssetsCategoryRepository } from '../interfaces';
+import { Asset, AssetsCategories, Category, IAssetsCategoryRepository } from '../interfaces';
 import { BaseRepository } from './base.repository';
 
 export class AssetsCategoryRepository extends BaseRepository<AssetsCategories> implements IAssetsCategoryRepository {
@@ -7,10 +7,10 @@ export class AssetsCategoryRepository extends BaseRepository<AssetsCategories> i
     }
 
     public async findCategoriesByAssetId(id: string): Promise<AssetsCategories[] | null> {
-      return this.dbClient.findAll({ where: { assetId: id } });
+      return this.dbClient.findAll({ where: { assetId: id }, include: Category });
     }
 
     public async findAssetsByCategoryId(id: string): Promise<AssetsCategories[] | null> {
-        return this.dbClient.findAll({ where: { categoryId: id } });
+        return this.dbClient.findAll({ where: { categoryId: id }, include: Asset });
       }
   }

@@ -1,27 +1,23 @@
-import { IAssetService, IAssetRepository, Asset } from "../interfaces";
+import { IAssetService, IAssetRepository, Asset, IAssetsCategoryRepository, AssetsCategories } from "../interfaces";
 
 export class AssetService implements IAssetService {
-  constructor(private assetRepository: IAssetRepository) {}
+  constructor(private assetRepository: IAssetRepository, private readonly assetCategoryRepository: IAssetsCategoryRepository) {}
 
-  public async createAsset(name: string, color: string): Promise<Asset> {
-    // const type = await this.assetRepository.create({
-    //   name,
-    //   color,
-    // });
-
-    return {} as Asset;
+  public async createAsset(data: any): Promise<Asset> {
+    const res = await this.assetRepository.create(data);
+    return res as Asset;
   }
 
     public async getAssetById(id: string): Promise<Asset> {
       return this.assetRepository.findById(id);
     }
 
-    public async getAssetsByCategoryId(id: string): Promise<Asset[]> {
-      return this.assetRepository.findByAssetsCategory(id);
+    public async getAssetsByCategoryId(id: string): Promise<AssetsCategories[]> {
+      return this.assetCategoryRepository.findAssetsByCategoryId(id);
     }
 
     public async getAssetsByCollectionId(id: string): Promise<Asset[]> {
-        return this.assetRepository.findByAssetsCollection(id);
+        return this.assetRepository.findByAssetsCollectionId(id);
       }
 
     public async updateAsset(id: string, data: any): Promise<void> {

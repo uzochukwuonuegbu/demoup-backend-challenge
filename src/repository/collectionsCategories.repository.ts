@@ -1,4 +1,4 @@
-import { CollectionCategories, IAssetsCategoryRepository, ICollectionCategoryRepository } from '../interfaces';
+import { Category, Collection, CollectionCategories, ICollectionCategoryRepository } from '../interfaces';
 import { BaseRepository } from './base.repository';
 
 export class CollectionCategoryRepository extends BaseRepository<CollectionCategories> implements ICollectionCategoryRepository {
@@ -6,11 +6,11 @@ export class CollectionCategoryRepository extends BaseRepository<CollectionCateg
       super(dbClient);
     }
 
-    public async findACollectionsByCategoryId(id: string): Promise<CollectionCategories[] | null> {
-      return this.dbClient.findAll({ where: { categoryId: id } });
+    public async findCollectionsByCategoryId(id: string): Promise<CollectionCategories[] | null> {
+      return this.dbClient.findAll({ where: { categoryId: id }, include: Collection });
     }
 
     public async findCategoriesByCollectionId(id: string): Promise<CollectionCategories[] | null> {
-        return this.dbClient.findAll({ where: { collectionId: id } });
+        return this.dbClient.findAll({ where: { collectionId: id }, include: Category });
       }
   }
