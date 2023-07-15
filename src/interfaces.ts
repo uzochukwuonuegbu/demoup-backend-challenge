@@ -26,8 +26,45 @@ export interface IAssetRepository {
   update(id: string, updates: any): Promise<string>;
   delete(id: string): Promise<void>;
   findAll(query?: any): Promise<Asset[]>;
-  findByAssetsCategory(id: string): Promise<Asset[]>;
-  findByAssetsCollection(d: string): Promise<Asset[]>;
+  findByAssetsCollectionId(d: string): Promise<Asset[]>;
+}
+
+export interface ICategoryRepository {
+  create(data: any): Promise<Category>;
+  findById(id: string): Promise<Category | null>;
+  find(query?: any): Promise<Category | null>;
+  update(id: string, updates: any): Promise<string>;
+  delete(id: string): Promise<void>;
+  findAll(query?: any): Promise<Category[]>;
+}
+
+export interface IAssetsCategoryRepository {
+  create(data: any): Promise<AssetsCategories>;
+  find(query?: any): Promise<AssetsCategories | null>;
+  update(id: string, updates: any): Promise<string>;
+  delete(id: string): Promise<void>;
+  findAll(query?: any): Promise<AssetsCategories[]>;
+  findCategoriesByAssetId(id: string): Promise<AssetsCategories[]>;
+  findAssetsByCategoryId(id: string): Promise<AssetsCategories[]>;
+}
+
+export interface ICollectionRepository {
+  create(data: any): Promise<Collection>;
+  findById(id: string): Promise<Collection | null>;
+  find(query?: any): Promise<Collection | null>;
+  update(id: string, updates: any): Promise<string>;
+  delete(id: string): Promise<void>;
+  findAll(query?: any): Promise<Collection[]>;
+}
+
+export interface ICollectionCategoryRepository {
+  create(data: any): Promise<CollectionCategories>;
+  find(query?: any): Promise<CollectionCategories | null>;
+  update(id: string, updates: any): Promise<string>;
+  delete(id: string): Promise<void>;
+  findAll(query?: any): Promise<CollectionCategories[]>;
+  findCategoriesByCollectionId(id: string): Promise<CollectionCategories[]>;
+  findACollectionsByCategoryId(id: string): Promise<CollectionCategories[]>;
 }
 
 // Models
