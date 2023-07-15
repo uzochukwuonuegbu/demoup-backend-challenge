@@ -1,30 +1,18 @@
 {
   "compilerOptions": {
-    "pretty": true,
-    "baseUrl": "./",
-    "outDir": "./dist",
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["es2020"],
-    "skipLibCheck": true,
-    "declaration": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "types": ["node", "jest"]
+    "lib": ["es2020.string", "ES2019.Array"],
+    "downlevelIteration": true,
+    "rootDir": ".",
+    "target": "es6",
+    "module": "CommonJS",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": ".build",
+    "skipLibCheck": true
   },
-  "include": ["src/**/*", "test/**/*"],
-  "exclude": ["node_modules"]
-}
+  "include": ["src/**/*", "test/integration", "test"],
+  "exclude": ["node_modules", "node_modules/@types", "test", "dist", "**/*spec.ts"],
+  }
