@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
 
-  type-controller-app:
+  web-app:
     build:
       context: ./
       target: prod
