@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express-serve-static-core";
 import { ExpressRouteFunc, IAuthController, IAuthService } from "../interfaces";
-import { loginSchema, registerSchema } from "./validators/asset.validator";
+import { loginSchema, registerSchema } from "./validators/auth.validator";
 
 export class AuthController implements IAuthController {
     constructor(private authService: IAuthService) {

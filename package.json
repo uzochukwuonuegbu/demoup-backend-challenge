@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "init-schema": "ts-node initSchema.ts",
-    "test:unit": "jest -c jest.unit.config.js",
-    "test:integration": "jest -c jest.integration.config.js",
+    "test": "jest --coverage --config ./test/jest.config.json  --runInBand --detectOpenHandles --forceExit",
+    "test:integration": "jest --config ./test/jest.config.integration.json --runInBand --forceExit",
     "start": "DOTENV_CONFIG_PATH=.env && npm run copy:env:prod && npm run init-schema && npm run build && node -r dotenv/config ./.build/src/main.js",
     "dev": "DOTENV_CONFIG_PATH=dev.env && npm run copy:env:dev && npm run init-schema && ts-node -r dotenv/config ./src/main.ts",
     "build": "npm run lint && npm run clean && tsc",
@@ -12,7 +12,6 @@
     "clean": "rimraf ./.build",
     "copy:env:dev": "cp dev.env.sample dev.env",
     "copy:env:prod": "cp env.sample .env",
-    "test": "jest --coverage --config ./test/jest.config.json  --runInBand --detectOpenHandles --forceExit",
     "create-db": "psql -U postgres -f ./init.db.sql",
     "create-db-dev": "psql -U postgres -f ./init-dev.db.sql"
   },

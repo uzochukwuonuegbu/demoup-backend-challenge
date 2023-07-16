@@ -154,9 +154,7 @@ export class Asset extends Model<AssetAttributes> implements AssetAttributes {
   public id!: string;
   public title!: string;
   public collection_id!: string;
-  public file_format!: string;
   public url!: string;
-  public size!: string;
   public description!: string;
 
   public readonly createdAt!: Date;

@@ -28,7 +28,6 @@ export class AuthService implements IAuthService {
         try {
             const existingUser = await this.authRepository.findByEmail(email);
             if (existingUser) {
-                console.log({ existingUser });
                 throw new RecordExistsError('User already exists');
             }
             const hashedPassword = await bcryptjs.hash(password, 10);

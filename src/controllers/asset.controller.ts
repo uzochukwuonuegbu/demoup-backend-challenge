@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express-serve-static-core";
 import { ExpressRouteFunc, IAssetController, IAssetService } from "../interfaces";
-import { InvalidRequestInputError, NotFoundError } from "./errorHandler/httpError";
 import { createAssetSchema } from "./validators/asset.validator";
 
 export class AssetController implements IAssetController {
