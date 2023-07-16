@@ -1,16 +1,38 @@
+import { BadRequestError } from "../controllers/errorHandler/httpError";
 import { Asset, AssetsCategories, IAssetRepository, IAssetsCategoryRepository, IAssetService } from "../interfaces";
 
 export class AssetService implements IAssetService {
   constructor(private assetRepository: IAssetRepository, private readonly assetCategoryRepository: IAssetsCategoryRepository) {}
 
     public async createAsset(data: any): Promise<Asset> {
-        const res = await this.assetRepository.create(data);
-        return res as Asset;
+        const { categoryIds = [] } = data;
+        let assetResult;
+        try {
+          assetResult = await this.assetRepository.create(data);
+        } catch (error) {
+          // log error
+          throw new BadRequestError('Unable to create asset');
+        }
+
+          const promises = [];
+        try {
+          if (categoryIds.length) {
+              for (const id of categoryIds) {
+                  promises.push(
+                      this.assetCategoryRepository.create({ asset_id: assetResult.id, category_id: id })
+                  )
+              }
+              await Promise.all(promises);
+          }
+          return assetResult as Asset;
+        } catch (error) {
+          // log error
+          throw new BadRequestError('Unable to add categories')
+        }
     }
 
     public async getAssets(filter: any): Promise<Asset[]> {
         const res = await this.assetRepository.findAll(filter || {});
-        console.log({ res });
         return res as Asset[];
     }
 
@@ -31,6 +53,7 @@ export class AssetService implements IAssetService {
     }
 
     public async deleteAsset(id: string): Promise<void> {
+      // delete asset categories if present
       await this.assetRepository.delete(id);
   }
 }

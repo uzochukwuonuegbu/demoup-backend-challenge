@@ -11,7 +11,6 @@ const routes = {
   createAsset: "/assets",
   getAssets: "/assets",
   getAssetById: "/assets/:id",
-  updateAsset: "/assets/:id",
   deleteAsset: "/assets/:id",
 };
 
@@ -28,11 +27,6 @@ router.get(
 router.get(
   routes.getAssetById,
   ctrl.getAssetById()
-);
-
-router.put(
-  routes.updateAsset,
-  ctrl.updateAsset()
 );
 
 router.delete(

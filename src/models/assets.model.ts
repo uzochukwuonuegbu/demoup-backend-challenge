@@ -14,17 +14,13 @@ Asset.init(
             type: DataTypes.STRING,
             allowNull: false,
           },
-          file_format: {
-            type: DataTypes.STRING,
-            allowNull: false,
-          },
-          size: {
+          url: {
             type: DataTypes.STRING,
             allowNull: false,
           },
           description: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
           },
           collection_id: {
             type: UUIDV4,

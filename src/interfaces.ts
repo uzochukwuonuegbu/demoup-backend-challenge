@@ -7,12 +7,11 @@ export interface IAssetController {
   createAsset(): ExpressRouteFunc;
   getAssets(): ExpressRouteFunc;
   getAssetById(): ExpressRouteFunc;
-  updateAsset(): ExpressRouteFunc;
   deleteAsset(): ExpressRouteFunc;
 }
 
 export interface IAssetService {
-  createAsset(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Asset>;
+  createAsset(data: any): Promise<Asset>;
   getAssets(filter: any): Promise<Asset[]>;
   getAssetById(id: string): Promise<Asset>;
   getAssetsByCategoryId(categoryId: string): Promise<AssetsCategories[] | null>;
@@ -22,7 +21,7 @@ export interface IAssetService {
 }
 
 export interface ICategoryService {
-  createCategory(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Category>;
+  createCategory(data: any): Promise<Category>;
   getCategoryById(id: string): Promise<Category>;
   getCategoriesByAssetId(assetId: string): Promise<AssetsCategories[] | null>;
   getCategoriesByCollectionId(categoryId: string): Promise<CollectionCategories[] | null>;
@@ -31,7 +30,7 @@ export interface ICategoryService {
 }
 
 export interface ICollectionService {
-  createCollection(name: string, type: string, collectionId: string, categoryIds: string[]): Promise<Category>;
+  createCollection(data: any): Promise<Category>;
   getCollectionById(id: string): Promise<Category>;
   updateCollection(id: string, data: any): Promise<void>;
   deleteCollection(id: string): Promise<void>;
@@ -89,8 +88,7 @@ export interface ICollectionCategoryRepository {
 interface AssetAttributes {
   id: string;
   title: string;
-  file_format: string;
-  size: string;
+  url: string;
   description: string;
   collection_id: string;
 }
@@ -125,6 +123,7 @@ export class Asset extends Model<AssetAttributes> implements AssetAttributes {
   public title!: string;
   public collection_id!: string;
   public file_format!: string;
+  public url!: string;
   public size!: string;
   public description!: string;
 
