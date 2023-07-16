@@ -7,6 +7,6 @@ export class AssetRepository extends BaseRepository<Asset> implements IAssetRepo
     }
 
     public async findByAssetsCollectionId(id: string): Promise<Asset[] | null> {
-      return this.dbClient.findAll({ where: { collectionId: id } });
+      return this.dbClient.findAll({ where: { collection_id: id } });
     }
   }

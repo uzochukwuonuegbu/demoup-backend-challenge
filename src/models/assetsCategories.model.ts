@@ -11,11 +11,11 @@ AssetsCategories.init(
       defaultValue: UUIDV4,
       allowNull: false,
     },
-    assetId: {
+    asset_id: {
       type: UUIDV4,
       allowNull: false,
     },
-    categoryId: {
+    category_id: {
       type: UUIDV4,
       allowNull: false,
     },
@@ -23,6 +23,7 @@ AssetsCategories.init(
   {
     sequelize,
     tableName: 'assets_categories',
+    timestamps: false,
   }
 );
 

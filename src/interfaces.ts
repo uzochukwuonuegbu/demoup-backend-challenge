@@ -89,17 +89,16 @@ export interface ICollectionCategoryRepository {
 interface AssetAttributes {
   id: string;
   title: string;
-  type: string;
-  fileFormat: string;
+  file_format: string;
   size: string;
   description: string;
-  collectionId: string;
+  collection_id: string;
 }
 
 interface AssetsCategoriesAttributes {
   id: string;
-  assetId: string;
-  categoryId: string;
+  asset_id: string;
+  category_id: string;
 }
 
 interface CategoryAttributes {
@@ -117,16 +116,15 @@ interface CollectionAttributes {
 
 interface CollectionCategoriesAttributes {
   id: string;
-  collectionId: string;
-  categoryId: string;
+  collection_id: string;
+  category_id: string;
 }
 
 export class Asset extends Model<AssetAttributes> implements AssetAttributes {
   public id!: string;
   public title!: string;
-  public type!: string;
-  public collectionId!: string;
-  public fileFormat!: string;
+  public collection_id!: string;
+  public file_format!: string;
   public size!: string;
   public description!: string;
 
@@ -136,8 +134,8 @@ export class Asset extends Model<AssetAttributes> implements AssetAttributes {
 
 export class AssetsCategories extends Model<AssetsCategoriesAttributes> implements AssetsCategoriesAttributes {
   public id!: string;
-  public assetId!: string;
-  public categoryId!: string;
+  public asset_id!: string;
+  public category_id!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -163,8 +161,8 @@ export class Collection extends Model<CollectionAttributes> implements Collectio
 
 export class CollectionCategories extends Model<CollectionCategoriesAttributes> implements CollectionCategoriesAttributes {
   public id!: string;
-  public collectionId!: string;
-  public categoryId!: string;
+  public collection_id!: string;
+  public category_id!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;

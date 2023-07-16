@@ -7,10 +7,10 @@ export class AssetsCategoryRepository extends BaseRepository<AssetsCategories> i
     }
 
     public async findCategoriesByAssetId(id: string): Promise<AssetsCategories[] | null> {
-      return this.dbClient.findAll({ where: { assetId: id }, include: Category });
+      return this.dbClient.findAll({ where: { asset_id: id }, include: Category });
     }
 
     public async findAssetsByCategoryId(id: string): Promise<AssetsCategories[] | null> {
-        return this.dbClient.findAll({ where: { categoryId: id }, include: Asset });
+        return this.dbClient.findAll({ where: { category_id: id }, include: Asset });
       }
   }

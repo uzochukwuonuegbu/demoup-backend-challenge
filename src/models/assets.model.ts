@@ -14,11 +14,7 @@ Asset.init(
             type: DataTypes.STRING,
             allowNull: false,
           },
-          type: {
-            type: DataTypes.STRING,
-            allowNull: false,
-          },
-          fileFormat: {
+          file_format: {
             type: DataTypes.STRING,
             allowNull: false,
           },
@@ -30,7 +26,7 @@ Asset.init(
             type: DataTypes.TEXT,
             allowNull: false,
           },
-          collectionId: {
+          collection_id: {
             type: UUIDV4,
             allowNull: false,
           },
@@ -38,6 +34,7 @@ Asset.init(
       {
         sequelize,
         tableName: 'assets',
+        timestamps: false,
       }
   );
 

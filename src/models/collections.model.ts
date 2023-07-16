@@ -1,13 +1,13 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, UUIDV4 } from 'sequelize';
 import sequelize from '../../sequelize.orm';
 import { Collection } from '../interfaces';
 
 Collection.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: UUIDV4,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: UUIDV4,
       allowNull: false,
     },
     name: {
@@ -23,6 +23,7 @@ Collection.init(
   {
     sequelize,
     tableName: 'collections',
+    timestamps: false,
   }
 );
 

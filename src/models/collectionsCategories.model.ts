@@ -1,27 +1,28 @@
-import { DataTypes } from 'sequelize';
+import { UUIDV4 } from 'sequelize';
 import sequelize from '../../sequelize.orm';
 import { CollectionCategories } from '../interfaces';
 
 CollectionCategories.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: UUIDV4,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: UUIDV4,
       allowNull: false,
     },
-    collectionId: {
-      type: DataTypes.UUID,
+    collection_id: {
+      type: UUIDV4,
       allowNull: false,
     },
-    categoryId: {
-      type: DataTypes.UUID,
+    category_id: {
+      type: UUIDV4,
       allowNull: false,
     },
   },
   {
     sequelize,
     tableName: 'collections_categories',
+    timestamps: false,
   }
 );
 

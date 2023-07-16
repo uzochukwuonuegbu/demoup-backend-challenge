@@ -7,10 +7,10 @@ export class CollectionCategoryRepository extends BaseRepository<CollectionCateg
     }
 
     public async findCollectionsByCategoryId(id: string): Promise<CollectionCategories[] | null> {
-      return this.dbClient.findAll({ where: { categoryId: id }, include: Collection });
+      return this.dbClient.findAll({ where: { category_id: id }, include: Collection });
     }
 
     public async findCategoriesByCollectionId(id: string): Promise<CollectionCategories[] | null> {
-        return this.dbClient.findAll({ where: { collectionId: id }, include: Category });
+        return this.dbClient.findAll({ where: { collection_id: id }, include: Category });
       }
   }
