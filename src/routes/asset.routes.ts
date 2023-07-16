@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { authenticateToken } from "../controllers/middlewares/auth.middleware";
 import { getAssetController } from "../dependency-injection";
 
 const ctrl = getAssetController();
@@ -16,21 +17,25 @@ const routes = {
 
 router.post(
     routes.createAsset,
+    authenticateToken,
     ctrl.createAsset()
 );
 
 router.get(
   routes.getAssets,
+  authenticateToken,
   ctrl.getAssets()
 );
 
 router.get(
   routes.getAssetById,
+  authenticateToken,
   ctrl.getAssetById()
 );
 
 router.delete(
   routes.deleteAsset,
+  authenticateToken,
   ctrl.deleteAsset()
 );
 

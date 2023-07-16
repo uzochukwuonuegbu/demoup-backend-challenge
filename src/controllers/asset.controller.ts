@@ -13,7 +13,7 @@ export class AssetController implements IAssetController {
                 const { error, value } = createAssetSchema.validate(req.body);
                 if (error) {
                     const errorMessage = error.details[0].message;
-                    throw new InvalidRequestInputError(errorMessage);
+                    res.status(400).json({ message: errorMessage });
                 }
                 const result = await this.assetService.createAsset(value);
                 res.status(201).json({ status: 201, message: 'success', data: result });
@@ -42,7 +42,7 @@ export class AssetController implements IAssetController {
                 if (result) {
                   res.status(200).json({ status: 200, message: 'success', data: result });
                 } else {
-                  throw new NotFoundError('Asset with this ID not found');
+                  res.status(404).json({ message: 'Asset with this ID not found' });
                 }
               } catch (err) {
                 next(err);

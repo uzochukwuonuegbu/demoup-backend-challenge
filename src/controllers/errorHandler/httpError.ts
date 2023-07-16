@@ -9,8 +9,8 @@ class HTTPError extends Error {
 
 export class InvalidRequestInputError extends HTTPError {
     constructor(message?: string) {
-      super(412, message || 'Bad Request');
-      Object.setPrototypeOf(this, BadRequestError.prototype);
+      super(412, message || 'Invalid Input');
+      Object.setPrototypeOf(this, InvalidRequestInputError.prototype);
     }
   }
 
@@ -44,8 +44,8 @@ export class NotFoundError extends HTTPError {
 
 export class RecordExistsError extends HTTPError {
     constructor(message?: string) {
-      super(400, message || 'Already Exists');
-      Object.setPrototypeOf(this, NotFoundError.prototype);
+      super(409, message || 'Already Exists');
+      Object.setPrototypeOf(this, RecordExistsError.prototype);
     }
   }
 export class InternalServerError extends HTTPError {

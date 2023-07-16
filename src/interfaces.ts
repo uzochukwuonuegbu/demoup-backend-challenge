@@ -10,6 +10,11 @@ export interface IAssetController {
   deleteAsset(): ExpressRouteFunc;
 }
 
+export interface IAuthController {
+  login(): ExpressRouteFunc;
+  register(): ExpressRouteFunc;
+}
+
 export interface IAssetService {
   createAsset(data: any): Promise<Asset>;
   getAssets(filter: any): Promise<Asset[]>;
@@ -18,6 +23,11 @@ export interface IAssetService {
   getAssetsByCollectionId(categoryId: string): Promise<Asset[] | null>;
   updateAsset(id: string, data: any): Promise<void>;
   deleteAsset(id: string): Promise<void>;
+}
+
+export interface IAuthService {
+  login(email: string, password: string): Promise<{ token: string }>;
+  register(email: string, password: string): Promise<{ token: string }>;
 }
 
 export interface ICategoryService {
@@ -44,6 +54,16 @@ export interface IAssetRepository {
   delete(id: string): Promise<void>;
   findAll(query?: any): Promise<Asset[]>;
   findByAssetsCollectionId(id: string): Promise<Asset[]>;
+}
+
+export interface IAuthRepository {
+  create(assetData: any): Promise<Auth>;
+  findById(id: string): Promise<Auth | null>;
+  find(query?: any): Promise<Auth | null>;
+  update(id: string, updates: any): Promise<string>;
+  delete(id: string): Promise<void>;
+  findAll(query?: any): Promise<Auth[]>;
+  findByEmail(email: string): Promise<Auth>;
 }
 
 export interface ICategoryRepository {
@@ -93,6 +113,12 @@ interface AssetAttributes {
   collection_id: string;
 }
 
+interface AuthAttributes {
+  id: string;
+  email: string;
+  password: string;
+}
+
 interface AssetsCategoriesAttributes {
   id: string;
   asset_id: string;
@@ -116,6 +142,12 @@ interface CollectionCategoriesAttributes {
   id: string;
   collection_id: string;
   category_id: string;
+}
+
+export class Auth extends Model<AuthAttributes> implements AuthAttributes {
+  public id!: string;
+  public email!: string;
+  public password!: string;
 }
 
 export class Asset extends Model<AssetAttributes> implements AssetAttributes {

@@ -8,6 +8,7 @@ async function createSchema() {
 
     // Define your schema creation queries here
     const schemaQueries = [
+      'CREATE TABLE IF NOT EXISTS auth (id VARCHAR(255) PRIMARY KEY, email VARCHAR(255), password TEXT, created_at TIMESTAMP, updated_at TIMESTAMP)',
       'CREATE TABLE IF NOT EXISTS categories (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), description TEXT, created_at TIMESTAMP, updated_at TIMESTAMP)',
       'CREATE TABLE IF NOT EXISTS collections (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), description TEXT, created_at TIMESTAMP, updated_at TIMESTAMP)',
       'CREATE TABLE IF NOT EXISTS assets (id VARCHAR(255) PRIMARY KEY, title VARCHAR(255), description TEXT, url TEXT, collection_id VARCHAR(255) REFERENCES collections(id) on delete cascade, created_at TIMESTAMP, updated_at TIMESTAMP)',

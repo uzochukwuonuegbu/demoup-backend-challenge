@@ -53,7 +53,6 @@ export class AssetService implements IAssetService {
     }
 
     public async deleteAsset(id: string): Promise<void> {
-      // delete asset categories if present
       await this.assetRepository.delete(id);
   }
 }
