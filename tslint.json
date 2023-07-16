@@ -12,7 +12,9 @@
         "db/**/*.{ts,js}"
       ]
     },
-    "jsRules": {},
+    "jsRules": {
+      "object-literal-sort-keys": false
+    },
     "rules": {
       "arrow-parens": false,
       "import-name": false,

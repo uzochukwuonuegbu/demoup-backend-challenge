@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
-import { Client } from 'pg'
+import dotenv from 'dotenv';
+import { Client } from 'pg';
 
-dotenv.config()
+dotenv.config({ path: process.env.DOTENV_CONFIG_PATH });
 
 export const getDbClient = (): Client => {
   const client = new Client({

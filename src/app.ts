@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-// import { errorHandler } from "./controllers/errorHandler/httpError";
+import { errorHandler } from "./controllers/errorHandler/httpError";
 import router from "./routes";
 
 const app = express();
@@ -12,6 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 export default app;
