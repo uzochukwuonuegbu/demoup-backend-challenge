@@ -31,6 +31,7 @@ export class AuthController implements IAuthController {
                 const { error, value } = loginSchema.validate(req.body);
                 if (error) {
                     const errorMessage = error.details[0].message;
+                    logger.errorLog('Unable to login', {error: errorMessage})
                     res.status(400).json({ message: errorMessage });
                 }
                 const { email, password } = value;

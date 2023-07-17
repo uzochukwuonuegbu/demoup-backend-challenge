@@ -25,19 +25,13 @@ export class AuthService implements IAuthService {
     }
 
     public async register(email: string, password: string): Promise<{ token: string }> {
-        try {
-            const existingUser = await this.authRepository.findByEmail(email);
-            if (existingUser) {
-                throw new RecordExistsError('User already exists');
-            }
-            const hashedPassword = await bcryptjs.hash(password, 10);
-            const user = await this.authRepository.create({ email, password: hashedPassword });
-            const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET);
-            return token
-        } catch (error) {
-          // log error
-          console.log({ error });
-          throw new BadRequestError('Unable to register user')
-        }
+      const existingUser = await this.authRepository.findByEmail(email);
+      if (existingUser) {
+          throw new RecordExistsError('User already exists');
+      }
+      const hashedPassword = await bcryptjs.hash(password, 10);
+      const user = await this.authRepository.create({ email, password: hashedPassword });
+      const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET);
+      return token
     }
 }
