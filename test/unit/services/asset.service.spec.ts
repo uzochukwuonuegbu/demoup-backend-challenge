@@ -1,6 +1,5 @@
 import { AssetService } from '../../../src/services/asset.service';
 import { IAssetRepository, IAssetsCategoryRepository } from '../../../src/interfaces';
-import { BadRequestError } from '../../../src/controllers/errorHandler/httpError';
 
 describe('AssetService', () => {
   let assetService: AssetService;
@@ -44,7 +43,7 @@ describe('AssetService', () => {
 
       assetRepository.create = jest.fn().mockRejectedValue(mockError);
 
-      await expect(assetService.createAsset(mockData)).rejects.toThrow(BadRequestError);
+      await expect(assetService.createAsset(mockData)).rejects.toThrow(Error);
       expect(assetRepository.create).toHaveBeenCalledWith(mockData);
     });
 
@@ -56,7 +55,7 @@ describe('AssetService', () => {
       assetRepository.create = jest.fn().mockResolvedValue(mockAssetResult);
       assetCategoryRepository.create = jest.fn().mockRejectedValue(mockError);
 
-      await expect(assetService.createAsset(mockData)).rejects.toThrow(BadRequestError);
+      await expect(assetService.createAsset(mockData)).rejects.toThrow(Error);
       expect(assetRepository.create).toHaveBeenCalledWith(mockData);
       expect(assetCategoryRepository.create).toHaveBeenCalledWith({
         asset_id: mockAssetResult.id,

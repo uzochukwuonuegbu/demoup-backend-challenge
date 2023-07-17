@@ -1,6 +1,6 @@
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { BadRequestError, NotFoundError, UnauthorizedError } from '../../../src/controllers/errorHandler/httpError';
+import { NotFoundError, RecordExistsError, UnauthorizedError } from '../../../src/controllers/errorHandler/httpError';
 import { IAuthRepository } from '../../../src/interfaces';
 import { AuthService } from '../../../src/services/auth.service';
 
@@ -89,7 +89,7 @@ describe('AuthService', () => {
 
       authRepository.findByEmail = jest.fn().mockResolvedValue(mockUser);
 
-      await expect(authService.register(mockEmail, mockPassword)).rejects.toThrow(BadRequestError);
+      await expect(authService.register(mockEmail, mockPassword)).rejects.toThrow(RecordExistsError);
     });
   });
 });
