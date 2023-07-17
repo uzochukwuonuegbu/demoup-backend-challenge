@@ -11,9 +11,7 @@
     "lint": "tslint --project .",
     "clean": "rimraf ./.build",
     "copy:env:dev": "cp dev.env.sample dev.env",
-    "copy:env:prod": "cp env.sample .env",
-    "create-db": "psql -U postgres -f ./init.db.sql",
-    "create-db-dev": "psql -U postgres -f ./init-dev.db.sql"
+    "copy:env:prod": "cp env.sample .env"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

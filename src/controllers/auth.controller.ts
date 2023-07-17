@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express-serve-static-core";
 import { ExpressRouteFunc, IAuthController, IAuthService } from "../interfaces";
+import logger from '../log.service';
 import { loginSchema, registerSchema } from "./validators/auth.validator";
 
 export class AuthController implements IAuthController {
@@ -18,6 +19,7 @@ export class AuthController implements IAuthController {
                 const token = await this.authService.register(email, password);
                 res.status(201).json({ token, status: 201, message: 'success' });
             } catch (err) {
+                logger.errorLog('Unable to register user', {error: err})
                 next(err);
             }
         }
@@ -29,12 +31,14 @@ export class AuthController implements IAuthController {
                 const { error, value } = loginSchema.validate(req.body);
                 if (error) {
                     const errorMessage = error.details[0].message;
+                    logger.errorLog('Unable to login', {error: errorMessage})
                     res.status(400).json({ message: errorMessage });
                 }
                 const { email, password } = value;
                 const token = await this.authService.login(email, password);
                 res.status(200).json({ token, status: 201, message: 'success' });
             } catch (err) {
+                logger.errorLog('Unable to login', {error: err})
                 next(err);
             }
         }

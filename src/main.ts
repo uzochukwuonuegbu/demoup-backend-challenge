@@ -8,7 +8,6 @@ import swaggerDocument from '../swagger.js';
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-console.log({ port: process.env.PORT  })
 const PORT = process.env.PORT || 3000;
 app.listen(
   PORT, () => {
