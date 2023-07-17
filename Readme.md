@@ -89,7 +89,7 @@ NB: make sure the server is running
 
 # Theory Solution:
 
-Here is a link to the architecture diagram for the conceptual model: ![Conceptual Model](https://github.com/uzochukwuonuegbu/demoup-backend-challenge/assets/26324423/3c81babd-2411-4565-9410-0dd670928ea0)
+Here is a link to the architecture diagram for the conceptual model: ![Conceptual Model](https://github.com/uzochukwuonuegbu/demoup-backend-challenge/assets/26324423/2e5b8d1e-3b79-40ae-934a-2cf427e56d33)
 
 
 # Justification:
