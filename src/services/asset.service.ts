@@ -1,4 +1,3 @@
-import { BadRequestError } from "../controllers/errorHandler/httpError";
 import { Asset, AssetsCategories, IAssetRepository, IAssetsCategoryRepository, IAssetService } from "../interfaces";
 
 export class AssetService implements IAssetService {

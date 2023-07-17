@@ -28,7 +28,7 @@ export class AssetController implements IAssetController {
     public getAssets(): ExpressRouteFunc {
         return async (req: Request, res: Response, next: NextFunction) => {
             try {
-                // add query builder
+                // TODO: add query from request
                 const result = await this.assetService.getAssets({});
                 res.status(200).json({ status: 200, message: 'success', data: result });
             } catch (err) {
