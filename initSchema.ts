@@ -17,6 +17,7 @@ async function createSchema() {
     ];
 
     for (const query of schemaQueries) {
+      console.log(' RUNNING QUERIES')
       const res = await client.query(query);
       console.log('Executed query:', query, res);
     }

@@ -17,7 +17,7 @@ services:
       DB_HOST: postgresDb
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: postgres
+      DB_PASS: postgres
       DB_NAME: demoup-db
       NODE_ENV: prod
       PORT: 3000
