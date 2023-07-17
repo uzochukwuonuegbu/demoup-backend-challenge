@@ -7,4 +7,6 @@ export enum EnumEnvironment {
 }
 
 export const generalConfig = {
+  env: process.env.ENV,
+  isOffline: process.env.ENV === 'dev' ? true : false
 }
