@@ -23,10 +23,12 @@
 *The server should now be running on http://localhost:3000*
 
 
+
 ## Running the Application on DOCKER
 
-  - Run:
-      docker compose up
+    - Run:
+        docker compose up
+
 
 
 ## Endpoints(Samples)
