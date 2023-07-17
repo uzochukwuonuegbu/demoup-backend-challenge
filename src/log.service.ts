@@ -15,13 +15,12 @@ class LoggingService {
   }
 
   public errorLog(msg: string, data) {
-    const additionalData = this.formatErrorData(data);
-    this.log(msg, 'ERROR', { ...data, ...additionalData });
+    this.log(msg, 'ERROR', { data });
   }
 
   public debugLog(msg: string, data) {
     const additionalData = this.formatErrorData(data);
-    this.log(msg, 'DEBUG', { ...data, ...additionalData });
+    this.log(msg, 'DEBUG', { data, ...additionalData });
   }
 
   public log(msg: string, lvl: string, data) {
@@ -38,7 +37,6 @@ class LoggingService {
       stage: generalConfig.env,
       level: lvl,
       data: {
-        ...data,
         serviceName: 'xxx',
         lambdaRequestId: 'xxx',
       },
