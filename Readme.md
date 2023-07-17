@@ -3,7 +3,8 @@
 ## Getting Started:
 
     - Clone this repository to your local machine.
-    - Navigate to the project directory and run npm install to install the necessary dependencies.
+    - Navigate to the project directory
+    - Run npm install to install the necessary dependencies.
 
 
 ## Running the Application on local machine
